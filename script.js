@@ -154,7 +154,7 @@ var display5Day = function (data) {
         forecastEl.appendChild(forecastHumEl);
         
         var forecastWindEl = document.createElement("li");
-        forecastWindEl.textContent ="Wind Speed: " + dailyForecast.main.humidity + " %";
+        forecastWindEl.textContent ="Wind Speed: " + dailyForecast.main.humidity + " MPH";
         forecastWindEl.setAttribute("style", "list-style-type:none");
         forecastEl.appendChild(forecastWindEl);
         
