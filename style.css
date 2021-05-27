@@ -14,8 +14,14 @@ nav {
 body {
     background-color: #f4f1deff;
     border-style: none;
-   
+    outline: none;
 }
+
+div {
+    outline: none;
+    border: none !important;
+}
+
 .search-column{
     background-color: #81b29aff;
     border-style: none;

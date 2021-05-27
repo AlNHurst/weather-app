@@ -1,24 +1,24 @@
 var apiKey = "c31195c36002e92b2e74fb77d06215eb"
 
 var searchFormEl = document.getElementById("search-form");
-var cityInputEl = document.getElementById("city");
-var weatherContainerEl = document.getElementById("current-weather-container");
-var citySearchInputEl = document.getElementById("city-input");
-var forecastTitle = document.getElementById("forecast");
-var forecastContainerEl = document.getElementById("fiveday-container");
+var cityEl = document.getElementById("city");
 var savedSearchButtonEl = document.getElementById("saved-search-buttons");
+var citySearchEl = document.getElementById("city-search");
+var currentWeatherEl = document.getElementById("current-weather");
+var forecastTitleEl = document.getElementById("forecast");
+var fiveDayWeatherEl = document.getElementById("fiveday-weather");
 var cities = [];
 
 var formSumbitHandler = function (event) {
     event.preventDefault();
-    var city = cityInputEl.value.trim();
+    var city = cityEl.value.trim();
     if (!city) {
         alert("Please enter a city in the search box!");
     } else {
         getCityWeather(city);
         get5Day(city);
         cities.unshift({ city });
-        cityInputEl.value = "";
+        cityEl.value = "";
     }
     saveSearch();
     pastSearch(city);
@@ -42,27 +42,28 @@ var getCityWeather = function (city) {
 };
 
 var displayWeather = function (weather, searchCity) {
-    weatherContainerEl.textContent = "";
-    citySearchInputEl.textContent = searchCity;
+    currentWeatherEl.textContent = "";
+    citySearchEl.textContent = searchCity;
+    citySearchEl.setAttribute("style", "font-size: 24px");
 
     var currentDate = document.createElement("span")
     currentDate.textContent = " (" + moment(weather.dt.value).format("MMM D, YYYY") + ")";
-    citySearchInputEl.appendChild(currentDate);
+    citySearchEl.appendChild(currentDate);
 
     var temperatureEl = document.createElement("li");
     temperatureEl.textContent = "Temperature: " + weather.main.temp + " °F";
     temperatureEl.setAttribute("style", "font-size: 20px");
-    weatherContainerEl.appendChild(temperatureEl);
+    currentWeatherEl.appendChild(temperatureEl);
 
     var humidityEl = document.createElement("li");
     humidityEl.textContent = "Humidity: " + weather.main.humidity + " %";
     humidityEl.setAttribute("style", "font-size: 20px");
-    weatherContainerEl.appendChild(humidityEl);
+    currentWeatherEl.appendChild(humidityEl);
 
     var windSpeedEl = document.createElement("li");
     windSpeedEl.textContent = "Wind Speed: " + weather.wind.speed + " MPH";
     windSpeedEl.setAttribute("style", "font-size: 20px");
-    weatherContainerEl.appendChild(windSpeedEl);
+    currentWeatherEl.appendChild(windSpeedEl);
 
     var lat = weather.coord.lat;
     var lon = weather.coord.lon;
@@ -101,11 +102,10 @@ var displayUvIndex = function (index) {
     };
 
     uvIndexEl.appendChild(uvIndexValue);
-    weatherContainerEl.appendChild(uvIndexEl);
+    currentWeatherEl.appendChild(uvIndexEl);
 }
 
 var get5Day = function (city) {
-    var apiKey = "844421298d794574c100e3409cee0499"
     var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`
 
     fetch(apiURL)
@@ -117,8 +117,8 @@ var get5Day = function (city) {
 };
 
 var display5Day = function (weather) {
-    forecastContainerEl.textContent = ""
-    forecastTitle.textContent = "5-Day Forecast:";
+    fiveDayWeatherEl.textContent = ""
+    forecastTitleEl.textContent = "5-Day Forecast:";
 
     var forecast = weather.list;
     for (var i = 5; i < forecast.length; i = i+8) {
@@ -139,19 +139,22 @@ var display5Day = function (weather) {
 
         forecastEl.appendChild(weatherIcon);
 
-        var forecastTempEl = document.createElement("span");
+        var forecastTempEl = document.createElement("li");
         forecastTempEl.textContent = "Temp: " + dailyForecast.main.temp + " °F";
+        forecastTempEl.setAttribute("style", "list-style-type:none");
         forecastEl.appendChild(forecastTempEl);
 
-        var forecastHumEl = document.createElement("span");
+        var forecastHumEl = document.createElement("li");
         forecastHumEl.textContent ="Humidity: " + dailyForecast.main.humidity + " %";
+        forecastHumEl.setAttribute("style", "list-style-type:none");
         forecastEl.appendChild(forecastHumEl);
 
-        var forecastWindEl = document.createElement("span");
+        var forecastWindEl = document.createElement("li");
         forecastWindEl.textContent ="Wind Speed: " + dailyForecast.main.humidity + " %";
+        forecastWindEl.setAttribute("style", "list-style-type:none");
         forecastEl.appendChild(forecastWindEl);
 
-        forecastContainerEl.appendChild(forecastEl);
+        fiveDayWeatherEl.appendChild(forecastEl);
     }
 }
 

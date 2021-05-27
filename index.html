@@ -8,29 +8,29 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <nav class = "text-center p-2">
+    <nav class="text-center p-1">
         <h1>Weather Dashboard</h1>
     </nav>
     <main class="container">
-        <div class = "row">
+        <div class="row">
             <div class="col-12 col-md-3 p-2 search-column">
-                <form class = "border p-2" id="search-form">
+                <form class="border p-2" id="search-form">
                     <h5>Search for a City:</h5>
                     <input id="city" type="text" class="form-input" placeholder="Please enter a city"/>
                     <button class="btn btn-secondary" type="submit">Search</button>
                 </form>
-                <div class="saved-search border" id="saved-search-buttons"></div>
+                <div class="saved-search" id="saved-search-buttons"></div>
             </div>
             <div class="col-12 col-md-9">
-                <div class = "row border current-city" id="current-weather">
-                    <div class = "col-12">
-                        <h2 id="city-input"></h2>
-                        <ul id="current-weather-container"></ul>
+                <div class="row border border-secondary">
+                    <div class="col-12">
+                        <h2 id="city-search"></h2>
+                        <ul id="current-weather"></ul>
                     </div>  
                 </div>
-                <div class = "row border" id = "five-day-forecast">
-                        <h2 class= "col-12" id = "forecast"></h2>
-                        <div class = "d-flex" id = "fiveday-container"></div>
+                <div class="row" id="five-day-forecast">
+                        <h3 class="col-12" id="forecast"></h3>
+                        <div class="d-flex" id="fiveday-weather"></div>
                 </div>  
             </div>
         </div>
