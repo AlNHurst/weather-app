@@ -1,0 +1,46 @@
+* root {
+--eggshell: #f4f1deff;
+--terra-cotta: #e07a5fff;
+--independence: #3d405bff;
+--green-sheen: #81b29aff;
+--deep-champagne: #f2cc8fff;
+}
+
+nav {
+    background-color: #3d405bff;
+    color: #f4f1deff;
+}
+
+body {
+    background-color: #f4f1deff;
+    border-style: none;
+   
+}
+.search-column{
+    background-color: #81b29aff;
+    border-style: none;
+}
+
+.card-body{
+    flex:auto
+}
+
+span.high{
+    background-color: orangered;
+    color:white;
+}
+
+span.moderate{
+    background-color: yellow;
+    color:white;
+}
+
+span.low{
+    background-color: green;
+    color:white;
+}
+
+span.very-high{
+    background-color: red;
+    color:white;
+}

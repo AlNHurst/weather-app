@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
+    <title>Weather Dashboard</title>
 </head>
-
 <body>
-   <h1>Weather App</h1>
-   <form id="search-form" class="form">
-       <input id="search-input" class="format-input" type="text" placeholder="Enter a city name">
-       <button class="btn btn-info btn-block">Search</button>
-   </form>
-
+    <nav class = "text-center p-2">
+        <h1>Weather Dashboard</h1>
+    </nav>
+    <main class="container">
+        <div class = "row">
+            <div class="col-12 col-md-3 p-2 search-column">
+                <form class = "border p-2" id="search-form">
+                    <h5>Search for a City:</h5>
+                    <input id="city" type="text" class="form-input" placeholder="Please enter a city"/>
+                    <button class="btn btn-secondary" type="submit">Search</button>
+                </form>
+                <div class="saved-search border" id="saved-search-buttons"></div>
+            </div>
+            <div class="col-12 col-md-9">
+                <div class = "row border current-city" id="current-weather">
+                    <div class = "col-12">
+                        <h2 id="city-input"></h2>
+                        <ul id="current-weather-container"></ul>
+                    </div>  
+                </div>
+                <div class = "row border" id = "five-day-forecast">
+                        <h2 class= "col-12" id = "forecast"></h2>
+                        <div class = "d-flex" id = "fiveday-container"></div>
+                </div>  
+            </div>
+        </div>
+    </main>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="./script.js"></script>
 </body>
-
 </html>
